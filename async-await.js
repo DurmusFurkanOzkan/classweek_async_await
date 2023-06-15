@@ -35,15 +35,27 @@ const getNews = async() => {
         const res = await fetch(URL);
         if(!res.ok){
             throw new Error("News can not be fetched");
+            //? throw zinciri kırar altına bir şey yazılmaz renderError();
         }
         const data = await res.json();
         renderNews(data.articles);
-    }  catch(error){
-        console.log(error)
+    }  catch(err){
+        renderError(err);
     }
     
   
 }
+
+const renderError = (err) =>{
+    const newsDiv = document.getElementById("news");
+    newsDiv.innerHTML = `
+    <h3>${err}</h3>
+    <img src="./img/404.png" alt="404" />
+    `
+   
+    
+}
+
 
 const renderNews = (news) =>{
     console.log(news);
