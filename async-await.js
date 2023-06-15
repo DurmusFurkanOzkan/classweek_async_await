@@ -21,3 +21,34 @@
 //? https://newsapi.org/
 
 //? key: 038d009114be45ceb78d31623931b16a
+
+
+const getNews = async() => {
+
+    const API_KEY = "038d009114be45ceb78d31623931b16a";
+
+    const URL = `https://newsapi.org/v2/top-headlines?country=tr&apiKey=${API_KEY}`
+    
+    //? process.env.API_KEY
+
+    try{
+        const res = await fetch(URL);
+        if(!res.ok){
+            throw new Error("News can not be fetched");
+        }
+        const data = await res.json();
+        renderNews(data.articles);
+    }  catch(error){
+        console.log(error)
+    }
+    
+  
+}
+
+const renderNews = (news) =>{
+    console.log(news);
+}
+
+window.addEventListener("load" , () => {
+    getNews();
+})
