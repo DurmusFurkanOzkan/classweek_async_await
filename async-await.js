@@ -27,7 +27,7 @@ const getNews = async() => {
 
     const API_KEY = "038d009114be45ceb78d31623931b16a";
 
-    const URL = `https://newsapi.org/v2/top-headlines?country=tr&apiKey=${API_KEY}`
+    const URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
     
     //? process.env.API_KEY
 
@@ -59,6 +59,25 @@ const renderError = (err) =>{
 
 const renderNews = (news) =>{
     console.log(news);
+
+    const newsDiv = document.getElementById("news");
+
+    news.map((item) => {
+        const {title,description,content,url,urlToImage} = item; //? destructure
+
+
+        newsDiv.innerHTML += `
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${urlToImage}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">${title}</h5>
+            <p class="card-text">${content}</p>
+            <a href="${url}" target="_blank" class="btn btn-danger">Go Detail</a>
+        </div>
+        </div>
+        `
+
+    })
 }
 
 window.addEventListener("load" , () => {
