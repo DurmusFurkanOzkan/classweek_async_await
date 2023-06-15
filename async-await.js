@@ -67,12 +67,14 @@ const renderNews = (news) =>{
 
 
         newsDiv.innerHTML += `
-        <div class="card" style="width: 18rem;">
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="card" >
         <img class="card-img-top" src="${urlToImage}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">${title}</h5>
             <p class="card-text">${content}</p>
             <a href="${url}" target="_blank" class="btn btn-danger">Go Detail</a>
+        </div>
         </div>
         </div>
         `
